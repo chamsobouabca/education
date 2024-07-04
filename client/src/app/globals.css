@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  @apply min-h-screen w-screen bg-gray-900 text-white font-medium text-medium overflow-x-hidden;
+}
+
+.offer-section {
+  display: grid;
+  grid-template-rows: 20% 55% 20%;
+  gap: 5%;
+  height: 24rem;
+  transition: transform 0.4s ease-out;
+}
+
+.offer-section:hover {
+  transform: scale(1.05);
+};
+
+.data-card {
+  transition: transform 0.4s ease-out;
+}
+
+.data-card:hover {
+  transform: translateY(-0.2rem);
+}
+
+.ql-picker-options{
+  background-color: rgb(3 7 18) !important;
+  color: white !important;
+}
+
+.ql-picker-label{
+  background-color: transparent !important;
+}
+
+.ql-container {
+  min-height: 24rem !important;
+  background-color: rgb(17 24 39) !important;
+  border: none;
+}
+
+.ql-toolbar {
+  display: flex;
+  justify-items: center;
+  justify-content: space-around;
+}
+
+.ql-editor {
+  min-height: 24rem;
+  background-color: transparent !important;
+}
+
