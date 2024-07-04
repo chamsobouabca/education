@@ -35,6 +35,7 @@ export const signUp = async (
   }
 };
 export const logIn = async (req: Request, res: Response): Promise<Response> => {
+  console.log(req.body)
   const { email, password, role } = req.body;
   try {
     if (role === "admin") {
@@ -50,8 +51,13 @@ export const logIn = async (req: Request, res: Response): Promise<Response> => {
         .status(200)
         .cookie("typeScript", user.genToken(), {
           maxAge: 15 * 24 * 60 * 60 * 1000,
+          httpOnly: true,
+          secure: true, // Set to false for localhost (no HTTPS)
+          sameSite: "none",
+          
         })
         .json(user);
+        
     }
     if (role === "teacher") {
       const user = await Teacher.findOne({ email: email });
@@ -67,6 +73,9 @@ export const logIn = async (req: Request, res: Response): Promise<Response> => {
         .status(200)
         .cookie("typeScript", user.genToken(), {
           maxAge: 15 * 24 * 60 * 60 * 1000,
+          httpOnly: true,
+          secure: true, // Set to false for localhost (no HTTPS)
+          sameSite: "none",
         })
         .json(user);
     }
@@ -84,6 +93,9 @@ export const logIn = async (req: Request, res: Response): Promise<Response> => {
         .status(200)
         .cookie("typeScript", user.genToken(), {
           maxAge: 15 * 24 * 60 * 60 * 1000,
+          httpOnly: false,
+          secure: true, // Set to false for localhost (no HTTPS)
+          sameSite: "none",
         })
         .json(user);
     }

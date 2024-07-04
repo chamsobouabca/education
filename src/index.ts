@@ -8,11 +8,18 @@ import adminRouter from "./routes/admin.rout";
 import teacherRouter from "./routes/teacher.route";
 import studentRouter from "./routes/student.route";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+
 const app = express();
 dotenv.config();
 connectToDataBase();
 app.use(express.json());
 app.use(cookieParser());
+const corsOptions = {
+  origin: "http://127.0.0.1:5500", // adjust as necessary
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 app.use("/teacher", teacherRouter);

@@ -9,5 +9,6 @@ router.post("/logIn", logIn);
 router.get("/pro", protectedRoute, (req: Request, res: Response) => {
   console.log(req.user);
 });
+
 router.post("/createOffer", createOffer);
 export default router;
